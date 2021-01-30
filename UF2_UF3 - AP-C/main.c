@@ -5,15 +5,20 @@
 #include "header.h"
 #include "function.c"
 
+
+
 void main () {
     char ans; //respuesta y/n
-	do{
-        write_regis();
+    struct registry rg;
+    do{
+        write_regis(&rg);
         printf("Vols afegir un altre registre? (y/n): \n");
-	    fflush(stdout);
-	    ans = getchar();
-	    fflush(stdin);
-		
-		input_file();
-	} while (ans == 'y');
+        fflush(stdout);
+        ans = getchar();
+        fflush(stdin);
+        
+        test_header();
+        input_file(&rg);
+    } while (ans == 'y');
 }
+
