@@ -20,7 +20,7 @@ void write_regis(struct registry *reg) {
     printf("Telèfon: \n");
     fflush(stdout);
     scanf("%ld", &reg->phoneNumber);
-    while (reg->phoneNumber==0) {
+    while (reg->phoneNumber<0 || reg->phoneNumber>999999999) {
         printf("Introdueix un numero correcte: ");
         fflush(stdin);
         scanf("%ld", &reg->phoneNumber);
@@ -39,7 +39,7 @@ void input_file(struct registry *reg) {
     FILE *stream;
 
     stream=fopen("fitxer.txt", "a");
-    if (stream==0) {
+    if (stream==NULL) {
         perror("Error");
         exit(0);
     }
